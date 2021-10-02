@@ -1,5 +1,10 @@
 name: Changes
-on: [push, pull_request, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    tags-ignore: '*'
+  pull_request:
+    tags-ignore: '*'
 jobs:
   valide:
     name: Validate
