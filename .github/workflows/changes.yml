@@ -1,5 +1,5 @@
 name: Changes
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   valide:
     name: Validate
