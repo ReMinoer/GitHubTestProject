@@ -2,9 +2,9 @@ name: Changes
 on:
   workflow_dispatch:
   push:
-    tags-ignore: '*'
+    tags-ignore: '**'
   pull_request:
-    tags-ignore: '*'
+    tags-ignore: '**'
 jobs:
   valide:
     name: Validate
