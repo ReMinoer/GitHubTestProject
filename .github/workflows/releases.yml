@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOTNET_ARGUMENTS: --nologo -c Release
-      MSBUILD_PROPERTIES: |
-        -p:Authors=${{ github.repository_owner }} \
-        -p:PackageProjectUrl=https://github.com/${{ github.repository }} \
-        -p:RepositoryUrl=https://github.com/${{ github.repository }}.git \
-        -p:RepositoryBranch=master \
+      MSBUILD_PROPERTIES: >
+        -p:Authors=${{ github.repository_owner }}
+        -p:PackageProjectUrl=https://github.com/${{ github.repository }}
+        -p:RepositoryUrl=https://github.com/${{ github.repository }}.git
+        -p:RepositoryBranch=master
         -p:RepositoryCommit=${{ github.sha }}
     steps:
     - name: Checkout
