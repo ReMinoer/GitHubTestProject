@@ -1,4 +1,4 @@
-name: Changes
+name: Change
 on:
   workflow_dispatch:
   push:

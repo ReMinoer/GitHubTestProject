@@ -1,4 +1,4 @@
-name: Releases
+name: Release
 on:
   release:
     types: [published]
@@ -6,23 +6,31 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
+    env:
+      DOTNET_ARGUMENTS: --nologo -c Release
+      MSBUILD_PROPERTIES: |
+        -p:Authors=${{ github.repository_owner }} \
+        -p:PackageProjectUrl=https://github.com/${{ github.repository }} \
+        -p:RepositoryUrl=https://github.com/${{ github.repository }}.git \
+        -p:RepositoryBranch=master \
+        -p:RepositoryCommit=${{ github.sha }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install dotnet
-      uses: actions/setup-dotnet@v1
     - name: Parse Tag
       uses: dawidd6/action-get-tag@v1
       id: tag
+    - name: Install dotnet
+      uses: actions/setup-dotnet@v1
     - name: Restore
       run: dotnet restore
     - name: Build
-      run: dotnet build --nologo --no-restore -c Release -p:Version=${{steps.tag.outputs.tag}}
+      run: dotnet build --no-restore $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
     - name: Test
-      run: dotnet test --nologo --no-build -c Release
+      run: dotnet test --no-build $DOTNET_ARGUMENTS
     - name: Pack
-      run: dotnet pack --nologo --no-build -c Release -p:Version=${{steps.tag.outputs.tag}}
+      run: dotnet pack --no-build $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
     - name: Push
-      run: dotnet nuget push "**/bin/Release/*.nupkg" -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "src/**/bin/Release/*.nupkg" -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
