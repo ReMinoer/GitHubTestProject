@@ -28,6 +28,16 @@ jobs:
       run: dotnet build --no-restore $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
     - name: Test
       run: dotnet test --no-build $DOTNET_ARGUMENTS
+    - name: Zip
+      uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r githubtesttool.zip src/githubtesttool/bin/Release
+    - name: Release
+      uses: alexellis/upload-assets@0.3.0
+      with:
+        asset_paths: '["githubtesttool.zip"]'
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
     - name: Pack
       run: dotnet pack --no-build $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
     - name: Push
