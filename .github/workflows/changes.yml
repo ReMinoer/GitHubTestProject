@@ -11,6 +11,8 @@ jobs:
   valide:
     name: Validate
     runs-on: ubuntu-latest
+    env:
+      DOTNET_ARGUMENTS: --nologo -c Release
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -19,8 +21,10 @@ jobs:
     - name: Restore
       run: dotnet restore
     - name: Build
-      run: dotnet build --nologo --no-restore -c Release
+      run: dotnet build --no-restore $DOTNET_ARGUMENTS
     - name: Test
-      run: dotnet test --nologo --no-build -c Release
+      run: dotnet test --no-build $DOTNET_ARGUMENTS
+    - name: Publish
+      run: dotnet publish --no-build $DOTNET_ARGUMENTS
     - name: Pack
-      run: dotnet pack --nologo --no-build -c Release
+      run: dotnet pack --no-build $DOTNET_ARGUMENTS
