@@ -2,7 +2,12 @@ name: Release
 on:
   release:
     types: [published]
+defaults:
+  run:
+    shell: bash
 env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_ARGUMENTS: --nologo -c Release
   MSBUILD_PROPERTIES: >
     -p:Authors=${{ github.repository_owner }}
@@ -12,7 +17,7 @@ env:
     -p:RepositoryCommit=${{ github.sha }}
 jobs:
   release:
-    name: Release standalone
+    name: Release
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
@@ -46,7 +51,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
   nuget:
-    name: Publish Nuget packages
+    name: Publish Nuget Packages
     needs: release
     runs-on: ubuntu-latest
     steps:

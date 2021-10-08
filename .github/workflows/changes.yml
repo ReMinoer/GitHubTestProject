@@ -12,6 +12,8 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
       DOTNET_ARGUMENTS: --nologo -c Release
     steps:
     - name: Checkout
