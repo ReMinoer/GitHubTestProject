@@ -2,18 +2,22 @@ name: Release
 on:
   release:
     types: [published]
+env:
+  DOTNET_ARGUMENTS: --nologo -c Release
+  MSBUILD_PROPERTIES: >
+    -p:Authors=${{ github.repository_owner }}
+    -p:PackageProjectUrl=https://github.com/${{ github.repository }}
+    -p:RepositoryUrl=https://github.com/${{ github.repository }}.git
+    -p:RepositoryBranch=master
+    -p:RepositoryCommit=${{ github.sha }}
 jobs:
-  publish:
-    name: Publish
-    runs-on: ubuntu-latest
-    env:
-      DOTNET_ARGUMENTS: --nologo -c Release
-      MSBUILD_PROPERTIES: >
-        -p:Authors=${{ github.repository_owner }}
-        -p:PackageProjectUrl=https://github.com/${{ github.repository }}
-        -p:RepositoryUrl=https://github.com/${{ github.repository }}.git
-        -p:RepositoryBranch=master
-        -p:RepositoryCommit=${{ github.sha }}
+  release:
+    name: Release standalone
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -33,14 +37,32 @@ jobs:
     - name: Zip
       uses: thedoctor0/zip-release@master
       with:
-        filename: 'githubtesttool.zip'
+        filename: 'githubtesttool-${{ runner.os }}.zip'
         directory: 'src/GitHubTestProject.Tool/bin/Release/netcoreapp3.1/publish'
     - name: Release
       uses: alexellis/upload-assets@0.3.0
       with:
-        asset_paths: '["src/GitHubTestProject.Tool/bin/Release/netcoreapp3.1/publish/githubtesttool.zip"]'
+        asset_paths: '["src/GitHubTestProject.Tool/bin/Release/netcoreapp3.1/publish/githubtesttool-${{ runner.os }}.zip"]'
       env:
         GITHUB_TOKEN: ${{ github.token }}
+  nuget:
+    name: Publish Nuget packages
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Parse Tag
+      uses: dawidd6/action-get-tag@v1
+      id: tag
+    - name: Install dotnet
+      uses: actions/setup-dotnet@v1
+    - name: Restore
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
+    - name: Test
+      run: dotnet test --no-build $DOTNET_ARGUMENTS
     - name: Pack
       run: dotnet pack --no-build $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
     - name: Push
