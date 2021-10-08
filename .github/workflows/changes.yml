@@ -11,10 +11,13 @@ jobs:
   valide:
     name: Validate
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
-      DOTNET_ARGUMENTS: --nologo -c Release
+      DOTNET_ARGUMENTS: --nologo -c ${{ matrix.configuration }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
