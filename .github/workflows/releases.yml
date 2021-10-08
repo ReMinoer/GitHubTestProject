@@ -31,13 +31,14 @@ jobs:
     - name: Publish
       run: dotnet publish --no-build $DOTNET_ARGUMENTS
     - name: Zip
-      uses: montudor/action-zip@v1
+      uses: thedoctor0/zip-release@master
       with:
-        args: zip -qq -r githubtesttool.zip . -i src/GitHubTestProject.Tool/bin/Release/*/publish/*
+        filename: 'githubtesttool.zip'
+        directory: 'src/GitHubTestProject.Tool/bin/Release/netcoreapp3.1/publish'
     - name: Release
       uses: alexellis/upload-assets@0.3.0
       with:
-        asset_paths: '["githubtesttool.zip"]'
+        asset_paths: '["src/GitHubTestProject.Tool/bin/Release/netcoreapp3.1/publish/githubtesttool.zip"]'
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - name: Pack
