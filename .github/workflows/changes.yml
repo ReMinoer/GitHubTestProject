@@ -9,13 +9,4 @@ on:
     tags-ignore: ['**']
 jobs:
   validate:
-    name: Validate
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./.github/actions/dotnet-check-change
-      with:
-        configuration: ${{ matrix.configuration }}
+    uses: ./.github/workflow/dotnet-validate-workflow.yml@master
