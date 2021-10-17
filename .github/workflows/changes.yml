@@ -9,4 +9,4 @@ on:
     tags-ignore: ['**']
 jobs:
   validate:
-    uses: ./.github/workflow/dotnet-validate-workflow.yml@master
+    uses: ReMinoer/GitHubTestProject/.github/workflow/dotnet-validate-workflow.yml@master
