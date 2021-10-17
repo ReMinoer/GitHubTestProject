@@ -1,0 +1,50 @@
+name: dotnet / Nuget
+on:
+  workflow_call:
+    inputs:
+      sources_folder:
+        required: true
+        type: string
+      configuration:
+        required: false
+        type: string
+        default: Release
+    secrets:
+      nuget_token:
+        required: true
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_ARGUMENTS: --nologo -c ${{ inputs.configuration }}
+  MSBUILD_PROPERTIES: >
+    -p:Authors=${{ github.repository_owner }}
+    -p:PackageProjectUrl=https://github.com/${{ github.repository }}
+    -p:RepositoryUrl=https://github.com/${{ github.repository }}.git
+    -p:RepositoryBranch=master
+    -p:RepositoryCommit=${{ github.sha }}
+  NUGET_GLOB_PATTERN: ${{ inputs.sources_folder }}/**/bin/${{ inputs.configuration }}/*.nupkg
+jobs:
+  nuget:
+    name: Nuget
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Parse Tag
+      uses: dawidd6/action-get-tag@v1
+      id: tag
+    - name: Install dotnet
+      uses: actions/setup-dotnet@v1
+    - name: Restore
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
+    - name: Test
+      run: dotnet test --no-build $DOTNET_ARGUMENTS
+    - name: Pack
+      run: dotnet pack --no-build $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
+    - name: Push
+      run: dotnet nuget push "$NUGET_GLOB_PATTERN" -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.nuget_token }}

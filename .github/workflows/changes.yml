@@ -8,6 +8,6 @@ on:
     branches: ['**']
     tags-ignore: ['**']
 jobs:
-  dotnet:
+  dotnet-validate:
     name: dotnet
     uses: ReMinoer/GitHubTestProject/.github/workflows/dotnet-validate.yml@master
