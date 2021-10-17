@@ -5,7 +5,7 @@ on:
 jobs:
   dotnet-release:
     name: dotnet
-    uses: ReMinoer/GitHubTestProject/.github/workflows/dotnet-release.yml@master
+    uses: ReMinoer/workflows/.github/workflows/dotnet-release.yml@master
     with:
       project_folder: src/GitHubTestProject.Tool
       target_framework: netcoreapp3.1
