@@ -26,7 +26,6 @@ env:
 jobs:
   nuget:
     name: Nuget
-    needs: release
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
