@@ -37,8 +37,6 @@ jobs:
       fail-fast: true
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-    env:
-      ZIP_FILENAME: ${{ inputs.zip_prefix }}-${{ runner.os }}.zip
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -58,11 +56,11 @@ jobs:
     - name: Zip
       uses: thedoctor0/zip-release@master
       with:
-        filename: '${{ env.ZIP_FILENAME }}'
+        filename: '${{ inputs.zip_prefix }}-${{ runner.os }}.zip'
         directory: '${{ env.PUBLISH_FOLDER }}'
     - name: Release
       uses: alexellis/upload-assets@0.3.0
       with:
-        asset_paths: '["${{ env.PUBLISH_FOLDER }}/${{ env.ZIP_FILENAME }}"]'
+        asset_paths: '["${{ env.PUBLISH_FOLDER }}/${{ inputs.zip_prefix }}-${{ runner.os }}.zip"]'
       env:
         GITHUB_TOKEN: ${{ github.token }}
