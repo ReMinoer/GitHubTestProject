@@ -13,7 +13,7 @@ jobs:
   dotnet-nuget:
     needs: dotnet-release
     name: dotnet
-    uses: ReMinoer/GitHubTestProject/.github/workflows/dotnet-nuget.yml@master
+    uses: ReMinoer/workflows/.github/workflows/dotnet-nuget.yml@master
     with:
       sources_folder: src
     secrets:

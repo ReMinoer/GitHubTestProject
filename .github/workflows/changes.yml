@@ -10,4 +10,4 @@ on:
 jobs:
   dotnet-validate:
     name: dotnet
-    uses: ReMinoer/GitHubTestProject/.github/workflows/dotnet-validate.yml@master
+    uses: ReMinoer/workflows/.github/workflows/dotnet-validate.yml@master
