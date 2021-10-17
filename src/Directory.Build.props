@@ -1,5 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
+        <Authors>Rémi Morillon</Authors>
+		<Owners>Rémi Morillon</Owners>
 		<Copyright>Copyright (c) 2021 Rémi Morillon</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
