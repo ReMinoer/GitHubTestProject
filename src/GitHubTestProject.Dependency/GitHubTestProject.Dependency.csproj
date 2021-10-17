@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>Example of project dependency.</Description>
   </PropertyGroup>
 
 </Project>
