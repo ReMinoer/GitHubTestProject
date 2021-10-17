@@ -2,12 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Description>
-      GitHubTestProject is personal test project used to test various thing with .NET and GitHub actions.
-      I use it to prepare my CI setup on other projects.
+    <Description>GitHubTestProject is personal test project used to test various thing with .NET and GitHub actions.
+I use it to prepare my CI setup on other projects.
 
-      It does nothing. You can ignore it.
-    </Description>
+It does nothing. You can ignore it.</Description>
   </PropertyGroup>
 
   <ItemGroup>
