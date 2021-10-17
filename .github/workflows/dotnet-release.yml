@@ -23,11 +23,6 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_ARGUMENTS: --nologo -c ${{ inputs.configuration }}
   PUBLISH_FOLDER: ${{ inputs.project_folder }}/bin/${{ inputs.configuration }}/${{ inputs.target_framework }}/publish
-  MSBUILD_PROPERTIES: >
-    -p:PackageProjectUrl=https://github.com/${{ github.repository }}
-    -p:RepositoryUrl=https://github.com/${{ github.repository }}.git
-    -p:RepositoryBranch=master
-    -p:RepositoryCommit=${{ github.sha }}
 jobs:
   release:
     name: Release
@@ -47,7 +42,7 @@ jobs:
     - name: Restore
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore $DOTNET_ARGUMENTS $MSBUILD_PROPERTIES -p:Version=${{ steps.tag.outputs.tag }}
+      run: dotnet build --no-restore $DOTNET_ARGUMENTS -p:Version=${{ steps.tag.outputs.tag }}
     - name: Test
       run: dotnet test --no-build $DOTNET_ARGUMENTS
     - name: Publish
