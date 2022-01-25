@@ -13,4 +13,3 @@ jobs:
     uses: ReMinoer/workflows/.github/workflows/dotnet-validate.yml@master
     with:
       os: windows-latest
-      solution_file: GitHubTestProject.sln
