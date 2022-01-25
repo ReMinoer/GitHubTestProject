@@ -7,6 +7,7 @@ jobs:
     name: dotnet
     uses: ReMinoer/workflows/.github/workflows/dotnet-release.yml@master
     with:
+      solution_file: GitHubTestProject.sln
       project_folder: src/GitHubTestProject.Tool
       target_framework: netcoreapp3.1
       zip_prefix: githubtesttool
@@ -15,6 +16,8 @@ jobs:
     name: dotnet
     uses: ReMinoer/workflows/.github/workflows/dotnet-nuget.yml@master
     with:
+      os: macos-latest
+      solution_file: GitHubTestProject.sln
       sources_folder: src
     secrets:
       nuget_token: ${{ secrets.NUGET_TOKEN }}
