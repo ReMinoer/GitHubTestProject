@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" ?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="GitHubTestProjectVisualStudioExtension.32d2917c-09fd-46bd-b2fc-79c9b6000b4e" Version="1.0" Language="en-US" Publisher="Rémi Morillon" />
+        <DisplayName>GitHubTestProjectVisualStudioExtension</DisplayName>
+        <Description xml:space="preserve">VSIX Project used to test GitHub Actions</Description>
+        <Icon>Resources\Icon.png</Icon>
+        <PreviewImage>Resources\Icon.png</PreviewImage>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
+    </Installation>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[16.0,)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+    </Assets>
+</PackageManifest>

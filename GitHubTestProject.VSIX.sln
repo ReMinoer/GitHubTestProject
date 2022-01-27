@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubTestProject.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubTestProject.Dependency", "src\GitHubTestProject.Dependency\GitHubTestProject.Dependency.csproj", "{8C0822CC-A90E-4D91-A79B-64FC8602928E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Executables", "Executables", "{E5FC0101-CB4C-4E23-9B9F-8FD010CB138B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{873FB844-911B-4B33-923B-D1106F38A386}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubTestProject.Tool", "src\GitHubTestProject.Tool\GitHubTestProject.Tool.csproj", "{95844F5D-A707-46CC-9A0D-251AD8E647BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHubTestProjectVisualStudioExtension", "plugins\GitHubTestProjectVisualStudioExtension\GitHubTestProjectVisualStudioExtension.csproj", "{4D19D071-DE0D-4062-A748-468CC57C446D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,17 +33,17 @@ Global
 		{8C0822CC-A90E-4D91-A79B-64FC8602928E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C0822CC-A90E-4D91-A79B-64FC8602928E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C0822CC-A90E-4D91-A79B-64FC8602928E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D19D071-DE0D-4062-A748-468CC57C446D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D19D071-DE0D-4062-A748-468CC57C446D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D19D071-DE0D-4062-A748-468CC57C446D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D19D071-DE0D-4062-A748-468CC57C446D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8E169A71-2215-4664-ABF5-227A2F9AA91D} = {91F58D61-0A1A-4180-8996-E7A88D27C76E}
-		{95844F5D-A707-46CC-9A0D-251AD8E647BF} = {E5FC0101-CB4C-4E23-9B9F-8FD010CB138B}
+		{4D19D071-DE0D-4062-A748-468CC57C446D} = {873FB844-911B-4B33-923B-D1106F38A386}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB832A66-2843-4C25-8FF3-1699B1690CD4}

@@ -16,7 +16,6 @@ jobs:
     name: dotnet
     uses: ReMinoer/workflows/.github/workflows/dotnet-nuget.yml@master
     with:
-      os: macos-latest
       solution_file: GitHubTestProject.sln
       sources_folder: src
     secrets:
