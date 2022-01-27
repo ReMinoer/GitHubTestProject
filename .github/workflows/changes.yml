@@ -14,7 +14,7 @@ jobs:
     with:
       solution_file: GitHubTestProject.sln
   vsix-validate:
-    name: dotnet
+    name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-validate.yml@master
     with:
       solution_file: GitHubTestProject.VSIX.sln
