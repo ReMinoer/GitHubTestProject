@@ -3,8 +3,9 @@
     "identity": {
         "internalName": "GitHubTestProjectVisualStudioExtension"
     },
-    "categories": ["other"],
     "publisher": "9f932eaf-4a2e-4ed3-a36c-1a6f52f4817f",
+    "categories": ["other"],
+    "overview": "overview.md",
     "priceCategory": "free",
     "private": false,
     "qna": false,
