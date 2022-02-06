@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json.schemastore.org/vsix-publish",
+    "identity": {
+        "internalName": "GitHubTestProjectVisualStudioExtension"
+    },
+    "publisher": "9f932eaf-4a2e-4ed3-a36c-1a6f52f4817f",
+    "priceCategory": "free",
+    "private": false,
+    "qna": false,
+    "repo": "https://github.com/ReMinoer/GitHubTestProject"
+}
