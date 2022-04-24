@@ -34,13 +34,23 @@ jobs:
       sources_folder: src
     secrets:
       nuget_token: ${{ secrets.NUGET_TOKEN }}
-  vsix-publish:
-    needs: vsix-release
+  vsix-publish-2019:
+    needs: vsix-release-2019
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-publish.yml@master
     with:
       solution_file: GitHubTestProject.VSIX.sln
       project_folder: plugins/GitHubTestProjectVisualStudioExtension
       vsix_name: GitHubTestProjectVisualStudioExtension
+    secrets:
+      marketplace_token: ${{ secrets.MARKETPLACE_TOKEN }}
+  vsix-publish-2022:
+    needs: vsix-release-2022
+    name: vsix
+    uses: ReMinoer/workflows/.github/workflows/vsix-publish.yml@master
+    with:
+      solution_file: GitHubTestProject.VSIX.sln
+      project_folder: plugins/GitHubTestProjectVisualStudio17Extension
+      vsix_name: GitHubTestProjectVisualStudio17Extension
     secrets:
       marketplace_token: ${{ secrets.MARKETPLACE_TOKEN }}
