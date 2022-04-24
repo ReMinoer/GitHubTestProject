@@ -1,0 +1,1 @@
+Test of Visual Studio extension used to develop [GitHub workflows](https://github.com/ReMinoer/workflows/blob/master/.github/workflows/vsix-publish.yml).

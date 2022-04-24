@@ -35,7 +35,7 @@ jobs:
     secrets:
       nuget_token: ${{ secrets.NUGET_TOKEN }}
   vsix-publish-2019:
-    needs: vsix-release-2019
+    needs: [vsix-release-2019, vsix-release-2022]
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-publish.yml@master
     with:
@@ -45,7 +45,7 @@ jobs:
     secrets:
       marketplace_token: ${{ secrets.MARKETPLACE_TOKEN }}
   vsix-publish-2022:
-    needs: vsix-release-2022
+    needs: [vsix-release-2019, vsix-release-2022]
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-publish.yml@master
     with:
