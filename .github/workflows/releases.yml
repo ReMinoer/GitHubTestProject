@@ -11,13 +11,20 @@ jobs:
       project_folder: src/GitHubTestProject.Tool
       target_framework: netcoreapp3.1
       zip_prefix: githubtesttool
-  vsix-release:
+  vsix-release-2019:
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-release.yml@master
     with:
       solution_file: GitHubTestProject.VSIX.sln
       project_folder: plugins/GitHubTestProjectVisualStudioExtension
       vsix_name: GitHubTestProjectVisualStudioExtension
+  vsix-release-2022:
+    name: vsix
+    uses: ReMinoer/workflows/.github/workflows/vsix-release.yml@master
+    with:
+      solution_file: GitHubTestProject.VSIX.sln
+      project_folder: plugins/GitHubTestProjectVisualStudio17Extension
+      vsix_name: GitHubTestProjectVisualStudio17Extension
   dotnet-nuget:
     needs: dotnet-release
     name: dotnet
