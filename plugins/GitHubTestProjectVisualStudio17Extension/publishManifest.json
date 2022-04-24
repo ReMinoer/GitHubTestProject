@@ -1,7 +1,7 @@
 {
     "$schema": "http://json.schemastore.org/vsix-publish",
     "identity": {
-        "internalName": "GitHubTestProjectVisualStudioExtension"
+        "internalName": "GitHubTestProjectVisualStudio17Extension"
     },
     "publisher": "ReMinoer",
     "categories": ["other"],
