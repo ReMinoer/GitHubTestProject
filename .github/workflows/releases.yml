@@ -11,6 +11,7 @@ jobs:
       project_folder: src/GitHubTestProject.Tool
       target_framework: netcoreapp3.1
       zip_prefix: githubtesttool
+      dotnet_version: 3.1
   vsix-release-2019:
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-release.yml@master
@@ -18,6 +19,7 @@ jobs:
       solution_file: GitHubTestProject.VSIX.sln
       project_folder: plugins/GitHubTestProjectVisualStudioExtension
       vsix_name: GitHubTestProjectVisualStudioExtension
+      dotnet_version: 3.1
   vsix-release-2022:
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-release.yml@master
@@ -25,6 +27,7 @@ jobs:
       solution_file: GitHubTestProject.VSIX.sln
       project_folder: plugins/GitHubTestProjectVisualStudio17Extension
       vsix_name: GitHubTestProjectVisualStudio17Extension
+      dotnet_version: 3.1
   dotnet-nuget:
     needs: dotnet-release
     name: dotnet
@@ -32,6 +35,7 @@ jobs:
     with:
       solution_file: GitHubTestProject.sln
       sources_folder: src
+      dotnet_version: 3.1
     secrets:
       nuget_token: ${{ secrets.NUGET_TOKEN }}
   vsix-publish-2019:
@@ -42,6 +46,7 @@ jobs:
       solution_file: GitHubTestProject.VSIX.sln
       project_folder: plugins/GitHubTestProjectVisualStudioExtension
       vsix_name: GitHubTestProjectVisualStudioExtension
+      dotnet_version: 3.1
     secrets:
       marketplace_token: ${{ secrets.MARKETPLACE_TOKEN }}
   vsix-publish-2022:
@@ -52,5 +57,6 @@ jobs:
       solution_file: GitHubTestProject.VSIX.sln
       project_folder: plugins/GitHubTestProjectVisualStudio17Extension
       vsix_name: GitHubTestProjectVisualStudio17Extension
+      dotnet_version: 3.1
     secrets:
       marketplace_token: ${{ secrets.MARKETPLACE_TOKEN }}
