@@ -14,6 +14,12 @@ jobs:
     with:
       solution_file: GitHubTestProject.sln
       dotnet_version: 3.1
+  installer-validate:
+    name: installer
+    uses: ReMinoer/workflows/.github/workflows/installer-validate.yml@master
+    with:
+      solution_file: GitHubTestProject.Installer.sln
+      dotnet_version: 3.1
   vsix-validate:
     name: vsix
     uses: ReMinoer/workflows/.github/workflows/vsix-validate.yml@master
