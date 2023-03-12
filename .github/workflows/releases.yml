@@ -28,6 +28,15 @@ jobs:
       project_folder: plugins/GitHubTestProjectVisualStudio17Extension
       vsix_name: GitHubTestProjectVisualStudio17Extension
       dotnet_version: 3.1
+  installer-validate:
+    name: installer
+    uses: ReMinoer/workflows/.github/workflows/installer-release.yml@master
+    with:
+      solution_file: GitHubTestProject.sln
+      project_folder: src/GitHubTestProject.Tool.Installer
+      installer_name: GitHubTestProject.Tool.Installer
+      installer_configuration_suffix: '_Installer'
+      dotnet_version: 3.1
   dotnet-nuget:
     needs: dotnet-release
     name: dotnet
