@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Executables", "Executables"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHubTestProject.Tool", "src\GitHubTestProject.Tool\GitHubTestProject.Tool.csproj", "{95844F5D-A707-46CC-9A0D-251AD8E647BF}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GitHubTestProject.Tool.Installer", "src\GitHubTestProject.Tool.Installer\GitHubTestProject.Tool.Installer.vdproj", "{A3F370B1-EF45-4702-A02B-4B7D1D612F9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,8 @@ Global
 		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95844F5D-A707-46CC-9A0D-251AD8E647BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F370B1-EF45-4702-A02B-4B7D1D612F9E}.Debug|Any CPU.ActiveCfg = Debug_Installer
+		{A3F370B1-EF45-4702-A02B-4B7D1D612F9E}.Release|Any CPU.ActiveCfg = Release_Installer
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8E169A71-2215-4664-ABF5-227A2F9AA91D} = {91F58D61-0A1A-4180-8996-E7A88D27C76E}
 		{95844F5D-A707-46CC-9A0D-251AD8E647BF} = {E5FC0101-CB4C-4E23-9B9F-8FD010CB138B}
+		{A3F370B1-EF45-4702-A02B-4B7D1D612F9E} = {E5FC0101-CB4C-4E23-9B9F-8FD010CB138B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB832A66-2843-4C25-8FF3-1699B1690CD4}
