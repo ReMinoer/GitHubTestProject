@@ -28,7 +28,7 @@ jobs:
       project_folder: plugins/GitHubTestProjectVisualStudio17Extension
       vsix_name: GitHubTestProjectVisualStudio17Extension
       dotnet_version: 3.1
-  installer-validate:
+  installer-release:
     name: installer
     uses: ReMinoer/workflows/.github/workflows/installer-release.yml@master
     with:
