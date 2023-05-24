@@ -6,7 +6,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackAsTool>true</PackAsTool>
     <Description>.NET SDK tool printing "Hello World !".</Description>
-    <!-- Version -->
+    <!-- REPLACE WITH VERSION -->
   </PropertyGroup>
 
   <ItemGroup>
